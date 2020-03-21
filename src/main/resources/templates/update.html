@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
+    <style type="text/css">
+body {font-family: Arial, Helvetica, sans-serif; font-size:12px; text-align:center;}
+a { text-decoration: none;}
+#all {widht: 100%; text-align:center; margin:auto;}
+#main {width: 96%; line-height: 1.8; margin:auto; border:1px #ccc dashed; text-align: left; text-indent: 2em;}
+.mt{
+    width:600px;
+    border:1px solid #aca7a7;
+    border-collapse: collapse;
+}
+
+.mt td{
+
+    border:1px solid #aca7a7;
+}
+
+</style>
+</head>
+
+<body>
+<div id="all">
+
+    <!--定义后台控制器路径，类似<form>标签的action属性-->
+    <form th:action="@{/update}" method="post">
+        <input type="hidden" name="pid" th:value="${p.pid}"/>
+        <table class="mt">
+            <tr>
+                <td>用户名</td>
+                <td><input type="text" name="username" th:value="${p.username}"/></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input type="password" name="password" th:value="${p.password}"/></td>
+            </tr>
+            <tr>
+                <td>性别</td>
+                <td><select name="gender" style="width:150px;">
+                        <option value="1" th:selected="${p.gender == 1}">男</option>
+                        <option value="2" th:selected="${p.gender == 2}">女</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>地址</td>
+                <td><input type="text" name="pAddr" th:value="${p.pAddr}"/></td>
+            </tr>
+            <tr>
+                <td>生日</td>
+                <td><input class="Wdate" type="text" name="birth" onClick="WdatePicker()" th:value="${#calendars.format(p.birth,'yyyy-MM-dd')}" /></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input type="submit" value="提交"/></td>
+            </tr>
+
+        </table>
+
+    </form>
+		
+		
+</div>
+</body>
+</html>

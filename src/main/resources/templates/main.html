@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+body {font-family: Arial, Helvetica, sans-serif; font-size:12px; text-align:center;}
+a { text-decoration: none;}
+#all {widht: 100%; text-align:center; margin:auto;}
+#main {width: 96%; line-height: 1.8; margin:auto; border:1px #ccc dashed; text-align: left; text-indent: 2em;}
+.mt{
+    width:1000px;
+    border:1px solid #aca7a7;
+    border-collapse: collapse;
+}
+
+.mt td{
+
+    border:1px solid #aca7a7;
+}
+
+</style>
+</head>
+
+<body>
+<div id="all">
+	
+        <div>
+                <a th:href="@{/add}">添加</a>
+        </div>
+        <table class="mt">
+                <tr>
+                        <td>用户名</td>
+                        <td>密码</td>
+                        <td>性别</td>
+                        <td>生日</td>
+                        <td>操作</td>
+                </tr>
+
+                <tr th:each="p:${pList}">
+                        <td th:text="${p.username}"></td>
+                        <td th:text="${p.password}"></td>
+                        <td th:text="${p.gender==1?'男':'女'}"></td>
+                        <td th:text="${#calendars.format(p.birth,'yyyy-MM-dd')}"></td>
+                        <td>
+                                <a th:href="@{/getPerson(pid=${p.pid})}">修改</a>
+                                <a th:href="@{/delete(pid=${p.pid})}">删除</a>
+                        </td>
+                </tr>
+
+        </table>
+		
+		
+		
+</div>
+</body>
+</html>
